@@ -1,4 +1,4 @@
-// SunriseController.cs  (sphere-driven)
+// SunriseController.cs  (sphere-driven, autoplay + loop)
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +8,6 @@ public class SunriseController : MonoBehaviour
     [Header("References")]
     [Tooltip("The sky dome or background sphere whose X rotation will be animated")]
     public Transform sphere;                // Drag 'Background Sphere' here
-    [Tooltip("Optional UI Button that triggers the sunrise")]
-    public Button triggerButton;
 
     [Header("Sphere Rotation (degrees)")]
     [Tooltip("Start X angle (below horizon)")]
@@ -20,7 +18,7 @@ public class SunriseController : MonoBehaviour
     public bool useLocalRotation = true;
 
     [Header("Timing")]
-    [Min(0.1f)] public float duration = 8f;
+    [Min(0.1f)] public float duration = 10f;
     public AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     [Header("Optional Light Ramp")]
@@ -37,6 +35,16 @@ public class SunriseController : MonoBehaviour
     [Tooltip("Ignore new triggers while the animation is playing")]
     public bool ignoreIfPlaying = false;
 
+    [Header("Autoplay & Loop")]
+    [Tooltip("자동 재생 여부 (씬 시작 시)")]
+    public bool playOnStart = true;
+    [Tooltip("무한 반복")]
+    public bool loop = true;
+    [Tooltip("끝에서 되돌아가는 핑퐁 모드(일출↔일몰)")]
+    public bool pingPong = true;
+    [Tooltip("루프 사이 일시정지(초)")]
+    [Min(0f)] public float loopPause = 0f;
+
     Coroutine animCo;
 
     // Cached rotations preserving the sphere's current Y/Z so only X changes
@@ -51,9 +59,12 @@ public class SunriseController : MonoBehaviour
         ComputeRotations();
 
         if (resetToStartOnPlay) ApplyState(0f);
+    }
 
-        if (triggerButton != null)
-            triggerButton.onClick.AddListener(StartSunrise);
+    void Start()
+    {
+        // 씬 시작 시 자동재생
+        if (playOnStart) StartSunrise();
     }
 
     void OnValidate()
@@ -104,20 +115,38 @@ public class SunriseController : MonoBehaviour
         if (ignoreIfPlaying && animCo != null) return;
 
         if (animCo != null) StopCoroutine(animCo);
-        animCo = StartCoroutine(CoSunrise());
+        animCo = StartCoroutine(loop ? CoSunriseLoop() : CoSunriseOnce(true));
     }
 
-    IEnumerator CoSunrise()
+    IEnumerator CoSunriseOnce(bool forward)
     {
         float t = 0f;
         while (t < duration)
         {
             t += Time.deltaTime;
-            float k = Mathf.Clamp01(t / duration);
-            ApplyState(curve.Evaluate(k));
+            float k = Mathf.Clamp01(t / duration);   // 0..1 진행도
+            float t01 = forward ? k : (1f - k);      // 방향에 따라 0→1 또는 1→0
+            ApplyState(curve.Evaluate(t01));
             yield return null;
         }
-        ApplyState(1f);
-        animCo = null;
+        ApplyState(forward ? 1f : 0f);
+    }
+
+    IEnumerator CoSunriseLoop()
+    {
+        bool forward = true;
+        while (true)
+        {
+            yield return CoSunriseOnce(forward);
+            if (!loop) break;
+
+            if (loopPause > 0f) yield return new WaitForSeconds(loopPause);
+
+            // 핑퐁이면 방향 반전, 아니면 다시 처음부터
+            forward = pingPong ? !forward : true;
+
+            if (!pingPong && resetToStartOnPlay)
+                ApplyState(0f); // 다음 사이클을 위해 0으로 스냅(옵션)
+        }
     }
 }

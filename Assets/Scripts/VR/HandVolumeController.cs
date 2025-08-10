@@ -43,10 +43,10 @@ public class HandVolumeController : MonoBehaviour
 
         ambientAudioSource.volume = targetVolume;
 
-        debugText.text =
-            $"Base Y: {baseY:F3}\n" +
-            $"Current Y: {currentY:F3}\n" +
-            $"ΔY: {deltaY:F3}\n" +
-            $"Volume: {ambientAudioSource.volume:F2}";
+        debugText.text = $"Volume: {ambientAudioSource.volume:F2}";
+            // $"Base Y: {baseY:F3}\n" +
+            // $"Current Y: {currentY:F3}\n" +
+            // $"ΔY: {deltaY:F3}\n" +
+            // $"Volume: {ambientAudioSource.volume:F2}";
     }
 }

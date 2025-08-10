@@ -37,7 +37,7 @@ public class BoatBuoyancy : MonoBehaviour
 
         currentVelocity = (currentVelocity + difference * floatStrength) * damping;
 
-        float newY = currentY + currentVelocity + 20f;
+        float newY = currentY + currentVelocity + 50f;
 
         // Clamp to avoid invalid position
         if (float.IsInfinity(newY) || float.IsNaN(newY)) return;

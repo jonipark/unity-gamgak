@@ -9,7 +9,7 @@ public class LightTemperatureByXRotation : MonoBehaviour
 
     [Header("Kelvin (adjust to taste)")]
     [Tooltip("일출/일몰: 진한 붉은")]
-    public float kelvinRed = 2400f;
+    public float kelvinRed = 800f;
     [Tooltip("주황~노랑")]
     public float kelvinOrangeYellowMin = 3200f;
     public float kelvinOrangeYellowMax = 4800f;
@@ -95,8 +95,8 @@ public class LightTemperatureByXRotation : MonoBehaviour
         kelvin = kelvinDayBlue; // 의미 없지만 초기화
         intensity = intensityNight;
 
-        // 일출: 10 → -10 (빨강)
-        if (a <= 10f && a >= -10f)
+        // 일출: 17 → -10 (빨강)
+        if (a <= 17f && a >= -10f)
         {
             float t = Smooth01(Mathf.InverseLerp(-10f, 0f, a)); // -10→0 : 0→1
             kelvin = Mathf.Lerp(3000f, kelvinRed, t);           // 3000→red

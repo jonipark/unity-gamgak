@@ -206,11 +206,11 @@ public class SkyGradientByXRotation : MonoBehaviour
     void EvaluatePhase(float a, out Color warmColor, out float sigma, out float intensity, out Color baseTint)
     {
         // 공통 유틸
-        float RiseT(float x) => Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(-20f, 0f, x));      // -20→0
+        float RiseT(float x) => Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(-40f, 20f, x));      // -40→20
         float SetT (float x) => Mathf.SmoothStep(0f, 1f, 1f - Mathf.InverseLerp(-180f, -160f, Mathf.Clamp(x, -180f, -160f))); // -180→-160
 
         // 1) 구간별 컬러 보간
-        // 해 뜰 때: -20↗0로 갈수록 주황/노랑 → 빨강
+        // 해 뜰 때: -40↗20로 갈수록 주황/노랑 → 빨강
         float tRise = RiseT(a);
         Color riseColor = Color.Lerp(sunriseOrange, dawnRed, tRise);
 

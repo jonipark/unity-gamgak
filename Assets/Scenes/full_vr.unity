@@ -19,7 +19,7 @@ RenderSettings:
   m_FogMode: 1
   m_FogDensity: 0.006
   m_LinearFogStart: 0
-  m_LinearFogEnd: 899.9998
+  m_LinearFogEnd: 750
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -891,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &528245447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f22d8db03344b0dbff1b3dceb30860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sun: {fileID: 0}
+  sun: {fileID: 1746284656}
   waterRenderer: {fileID: 1344967466}
   baseShallowColor: {r: 0, g: 0, b: 0, a: 0}
   baseDeepColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1871,7 +1871,8 @@ GameObject:
   - component: {fileID: 1085483352}
   - component: {fileID: 1085483351}
   - component: {fileID: 1085483350}
-  m_Layer: 5
+  - component: {fileID: 1085483353}
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,6 +1962,34 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1085483353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085483348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee10491ef6d5d1d49a270cf6b09bdc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableMipmapping: 1
+  _dynamicResolution: 0
+  _redrawResolutionThreshold: 2147483647
+  rectTransform: {fileID: 1085483349}
+  maxTextureSize: 2048
+  manualRedraw: 1
+  renderInterval: 1
+  renderIntervalFrameOffset: 0
+  expensive: 0
+  layer: 5
+  opacity: 1
+  shape: 0
+  curveRadius: 1
+  overlapMask: 0
+  overlayType: 2
+  _overlayEnabled: 1
 --- !u!114 &1106807941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,7 +2335,7 @@ GameObject:
   - component: {fileID: 1731316134}
   - component: {fileID: 1731316136}
   - component: {fileID: 1731316135}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: DebugText
   m_TagString: Untagged
   m_Icon: {fileID: 0}

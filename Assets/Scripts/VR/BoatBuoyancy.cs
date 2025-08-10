@@ -1,75 +1,30 @@
-// using UnityEngine;
-
-// public class BoatBuoyancy : MonoBehaviour
-// {
-//     public Transform waterPlane; // Assign in Inspector
-//     public float floatStrength = 1f;
-//     public float damping = 0.9f;
-
-//     private float currentVelocity = 0f;
-
-//     void Update()
-//     {
-//         if (waterPlane == null) return;
-
-//         Vector3 worldPos = transform.position;
-//         Vector3 localPos = waterPlane.InverseTransformPoint(worldPos);
-
-//         // These must match your water shader settings
-//         float waveSpeed = 1f;
-//         float waveScale = 0.2f;
-//         float waveHeight = 0.5f;
-
-//         float time = Time.time * waveSpeed;
-
-//         // Safe wave Y calculation
-//         float waveY = Mathf.Sin(localPos.x * waveScale + time) *
-//                       Mathf.Sin(localPos.z * waveScale + time) *
-//                       waveHeight;
-
-//         float targetY = waterPlane.position.y + waveY;
-//         float currentY = transform.position.y;
-//         float difference = targetY - currentY;
-
-//         // Add safety to damping and floatStrength
-//         floatStrength = Mathf.Clamp(floatStrength, 0f, 10f);
-//         damping = Mathf.Clamp(damping, 0.01f, 0.99f);
-
-//         currentVelocity = (currentVelocity + difference * floatStrength) * damping;
-
-//         float newY = currentY + currentVelocity + 50f;
-
-//         // Clamp to avoid invalid position
-//         if (float.IsInfinity(newY) || float.IsNaN(newY)) return;
-
-//         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-//     }
-// }
-
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class BoatBuoyancy : MonoBehaviour
 {
     [Header("References")]
-    public Transform water;                  // 물 오브젝트(바다) Transform
-    public bool autoFindWater = true;        // 물 오브젝트 자동 탐색 (Tag=Water 권장)
+    public Transform water;                  // 바다 Transform
+    public bool autoFindWater = true;        // Tag=Water 자동 연결
 
     [Header("Float")]
-    [Range(0f, 10f)] public float strength = 4f;   // 떠오르는 힘(스프링)
-    [Range(0f, 2f)]  public float damping  = 0.8f; // 감쇠(댐퍼)
-    public float heightOffset = 0.0f;              // 배마다 드래프트(물 위로 얼마나 더)
+    [Range(0f, 10f)] public float strength = 4f;   // 스프링
+    [Range(0f,  2f)] public float damping  = 0.8f; // 감쇠
+    public float heightOffset = 0.0f;              // 드래프트
 
-    [Header("Waves (shader와 값 맞추기)")]
+    [Header("Waves (shader와 값 동일)")]
     public float waveSpeed  = 1f;
-    public float waveScale  = 0.15f;   // 주파수(빈도)
-    public float waveHeight = 0.4f;    // 파고(진폭)
+    public float waveScale  = 0.15f;
+    public float waveHeight = 0.4f;
 
     [Header("Physics (선택)")]
-    public bool useRigidbody = false;  // Rigidbody 쓰면 true
+    public bool useRigidbody = false;
     Rigidbody rb;
 
     float velY;
+    bool _paused;
+
+    public bool IsPaused => _paused;
 
     void Awake()
     {
@@ -81,9 +36,8 @@ public class BoatBuoyancy : MonoBehaviour
 
         if (useRigidbody)
         {
-            rb = GetComponent<Rigidbody>();
-            if (!rb) rb = gameObject.AddComponent<Rigidbody>();
-            rb.useGravity = false;     // 부력으로만 위아래 이동
+            rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = false;
             rb.interpolation = RigidbodyInterpolation.Interpolate;
         }
     }
@@ -92,14 +46,12 @@ public class BoatBuoyancy : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Rigidbody를 쓸 때는 물리 프레임에서
-        if (useRigidbody) Tick(Time.fixedDeltaTime);
+        if (useRigidbody && !_paused) Tick(Time.fixedDeltaTime);
     }
 
     void Update()
     {
-        // Transform만 쓸 때는 일반 프레임에서
-        if (!useRigidbody) Tick(Time.deltaTime);
+        if (!useRigidbody && !_paused) Tick(Time.deltaTime);
     }
 
     void Tick(float dt)
@@ -108,26 +60,25 @@ public class BoatBuoyancy : MonoBehaviour
 
         var p = transform.position;
 
-        // 월드좌표로 파고 계산 (로컬X/Z 쓰지 않음)
-        float t = Time.time * waveSpeed;
-        float waveY =
-            Mathf.Sin(p.x * waveScale + t) *
-            Mathf.Sin(p.z * waveScale + t) *
-            waveHeight;
+        float targetY = water.position.y + QueryWaveY(p, Time.time) + heightOffset;
 
-        float targetY = water.position.y + waveY + heightOffset;
-
-        // 스프링-댐퍼
+        // 스프링-댐퍼 적분 (dt 필수)
         float error = targetY - p.y;
         velY += error * strength * dt;
         velY *= Mathf.Clamp01(1f - damping * dt);
 
         float newY = p.y + velY;
 
-        if (useRigidbody && rb)
-            rb.MovePosition(new Vector3(p.x, newY, p.z));
-        else
-            transform.position = new Vector3(p.x, newY, p.z);
+        if (useRigidbody && rb) rb.MovePosition(new Vector3(p.x, newY, p.z));
+        else                    transform.position = new Vector3(p.x, newY, p.z);
+    }
+
+    float QueryWaveY(Vector3 worldPos, float time)
+    {
+        float t = time * waveSpeed;
+        return Mathf.Sin(worldPos.x * waveScale + t) *
+               Mathf.Sin(worldPos.z * waveScale + t) *
+               waveHeight;
     }
 
     [ContextMenu("Snap to Water Now")]
@@ -136,13 +87,29 @@ public class BoatBuoyancy : MonoBehaviour
         if (!water) return;
 
         var p = transform.position;
-        float t = Time.time * waveSpeed;
-        float waveY =
-            Mathf.Sin(p.x * waveScale + t) *
-            Mathf.Sin(p.z * waveScale + t) *
-            waveHeight;
+        float y = water.position.y + QueryWaveY(p, Time.time) + heightOffset;
 
-        transform.position = new Vector3(p.x, water.position.y + waveY + heightOffset, p.z);
+        if (useRigidbody && rb) rb.position = new Vector3(p.x, y, p.z);
+        else                    transform.position = new Vector3(p.x, y, p.z);
+
         velY = 0f;
+    }
+
+    /// <summary>
+    /// Freeze에서 호출. snapToWater=true면 즉시 수면으로 붙이고 속도 0.
+    /// </summary>
+    public void SetPaused(bool pause, bool snapToWater)
+    {
+        _paused = pause;
+
+        // 튐 방지: 속도/각속도 초기화
+        velY = 0f;
+        if (useRigidbody && rb)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        if (snapToWater) SnapToWater();
     }
 }

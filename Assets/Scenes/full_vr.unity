@@ -136,9 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &23658613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3620585243408487168, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -156,9 +162,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 1
 --- !u!1 &72327606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4952274444683820945, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -176,9 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 29
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &78929473
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,9 +524,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &300701766
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +669,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &303213836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7649149459473294926, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+  m_PrefabInstance: {fileID: 1690163124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &303213839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303213836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
+  damping: 0.9
+  heightOffset: 20
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1001 &331779523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -820,9 +870,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!4 &334747355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8558721487487481168, guid: 5c1f4bfa21e0c4eb0afc918c3e177677, type: 3}
@@ -845,9 +901,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 4.5
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &366954420
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,9 +960,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &420868253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6574096696000043358, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -918,9 +986,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 26
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &435474168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,9 +1126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 30
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &508899704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,9 +1269,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 3
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 1
 --- !u!1 &580435097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1951295306423593584, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -1209,9 +1295,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 28
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &596622820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7172543185979816514, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -1229,9 +1321,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 7
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 1
 --- !u!1001 &623109839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1582,9 +1680,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 5
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,9 +2415,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!4 &973254636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8824406027161495217, guid: 5c1f4bfa21e0c4eb0afc918c3e177677, type: 3}
@@ -2461,9 +2571,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 25
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &1150162411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,6 +2835,32 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!1 &1333179198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5759799370149814557, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+  m_PrefabInstance: {fileID: 1690163124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333179201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333179198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
+  damping: 0.8
+  heightOffset: 4.5
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!4 &1344967463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4116667132062646812, guid: 3b290065ab77e714d91b7f9e02c830d7, type: 3}
@@ -2764,9 +2906,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 6
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &1549202039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,17 +3031,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.27
       objectReference: {fileID: 0}
+    - target: {fileID: -2560836341440830810, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       propertyPath: m_Name
       value: sun_rise__space
       objectReference: {fileID: 0}
     - target: {fileID: 3391820721333895863, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.5
+      value: 45.4
       objectReference: {fileID: 0}
     - target: {fileID: 6319614710819037592, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.6
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 6606379344992992031, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2911,6 +3063,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -75.3
       objectReference: {fileID: 0}
+    - target: {fileID: 7649149459473294926, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8558721487487481168, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10.6
@@ -2920,6 +3076,12 @@ PrefabInstance:
     - {fileID: -6757923488344600013, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7649149459473294926, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 303213839}
+    - targetCorrespondingSourceObject: {fileID: -5759799370149814557, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1333179201}
     - targetCorrespondingSourceObject: {fileID: 2175675252830787660, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2060331277}
@@ -2980,9 +3142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 16
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &1731316133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,9 +3426,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &1874488274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,9 +3636,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 6
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &2060331273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2175675252830787660, guid: e12183436de964934bb6d58ba65f90b9, type: 3}
@@ -3482,9 +3662,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 1344967463}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 4
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!1 &2115067345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6574096696000043358, guid: 5c1f4bfa21e0c4eb0afc918c3e177677, type: 3}
@@ -3502,9 +3688,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb390f2b1c53422088d182b3ad4db59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterPlane: {fileID: 1344967463}
-  floatStrength: 1
+  water: {fileID: 0}
+  autoFindWater: 1
+  strength: 4
   damping: 0.9
+  heightOffset: 0
+  waveSpeed: 1
+  waveScale: 0.15
+  waveHeight: 0.4
+  useRigidbody: 0
 --- !u!4 &2115067350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6399960582802498184, guid: 5c1f4bfa21e0c4eb0afc918c3e177677, type: 3}

@@ -3,8 +3,8 @@
 
 #### A seamless MR/VR exhibition that lets visitors step “into” Monet’s Impression, Sunrise and form their own sensory interpretation.
 
-<img width="500" height="816" alt="Screenshot 2025-11-05 at 9 33 28 PM" src="https://github.com/user-attachments/assets/5a490c46-9aea-44be-ba6a-c027f205ae11" />
-<img width="500" alt="Screenshot 2025-11-05 at 9 29 15 PM" src="https://github.com/user-attachments/assets/015a653e-af83-4137-8a09-56151c3f066d" />
+<img width="450" height="816" alt="Screenshot 2025-11-05 at 9 33 28 PM" src="https://github.com/user-attachments/assets/5a490c46-9aea-44be-ba6a-c027f205ae11" />
+<img width="450" alt="Screenshot 2025-11-05 at 9 29 15 PM" src="https://github.com/user-attachments/assets/015a653e-af83-4137-8a09-56151c3f066d" />
 
 
 🎥 Demo: https://www.youtube.com/watch?v=kwojRil0k7o
